@@ -1,4 +1,4 @@
-ACCOUNTS="9999999:d00050b6b133470000000000d:7999999999,88888888:f5b8888888888888888888888d3:7888888888"
+ACCOUNTS="account1_api_id:account1_api_hash:account1_phone,account2_api_id:account2_api_hash:account2_phone,account3_api_id:account3_api_hash:account3_phone,account4_api_id:account4_api_hash:account4_phone"
 TICKERS="BTC,ETH,SOL,BNB"
 LEVERAGES="1,5,10,15"
 AMOUNT_MIN=20
