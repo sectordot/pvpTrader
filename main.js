@@ -5,10 +5,12 @@ import { WalletManager } from './src/trade/walletManager.js';
 import fs from 'fs';
 import { displayLogo, log } from './src/utils/logger.js';
 import readline from 'readline';
+import { PointsManager } from './src/trade/points.js';
 
 const rl = readline.createInterface({
     input: process.stdin,
-    output: process.stdout
+    output: process.stdout,
+    terminal: false
 });
 
 async function showMenu() {
@@ -18,7 +20,8 @@ async function showMenu() {
     console.log('=================================================================');
     console.log('1. Проверить баланс');
     console.log('2. Запустить торговлю');
-    console.log('3. Выход');
+    console.log('3. Проверить поинты');
+    console.log('4. Выход');
     console.log('=================================================================');
 
     const answer = await new Promise(resolve => {
@@ -108,6 +111,14 @@ async function main() {
                     break;
                     
                 case '3':
+                    const pointsManager = new PointsManager(accounts);
+                    await pointsManager.checkPoints(botUsername);
+                    await new Promise(resolve => {
+                        rl.question('\nНажмите Enter для возврата в меню...', resolve);
+                    });
+                    break;
+                    
+                case '4':
                     rl.close();
                     process.exit(0);
                     break;
